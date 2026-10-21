@@ -54,7 +54,7 @@ func (d vfioDevice) GetName() (string, error) {
 // GetTotalMemoryMiB returns the total memory on a device in mebibytes (2^20 bytes)
 func (d vfioDevice) GetTotalMemoryMiB() (uint64, error) {
 	_, val := d.nvidiaPCIDevice.Resources.GetTotalAddressableMemory(true)
-	return val, nil
+	return val / (1024 * 1024), nil
 }
 
 func (d vfioDevice) IsMigEnabled() (bool, error) {
